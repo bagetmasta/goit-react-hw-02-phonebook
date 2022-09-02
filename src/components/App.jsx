@@ -8,10 +8,10 @@ import { nanoid } from 'nanoid';
 export class App extends Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      { id: 'id-1', name: 'Mukola Trush', number: '777-77-77' },
+      { id: 'id-2', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-3', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-4', name: 'Eden Clements', number: '645-17-79' },
     ],
     filter: '',
   };
@@ -23,10 +23,10 @@ export class App extends Component {
       number,
     };
 
-    this.checkForTheSameName(oneContact);
+    this.checkForSameName(oneContact);
   };
 
-  checkForTheSameName = oneContact => {
+  checkForSameName = oneContact => {
     const { contacts } = this.state;
 
     for (const contact of contacts) {
@@ -39,6 +39,12 @@ export class App extends Component {
 
     this.setState(({ contacts }) => ({
       contacts: [oneContact, ...contacts],
+    }));
+  };
+
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
   };
 
@@ -65,7 +71,10 @@ export class App extends Component {
 
         <h2>Contacts</h2>
         <Filter onChange={this.filterChange} />
-        <ContactsList contacts={visibleContacts} />
+        <ContactsList
+          contacts={visibleContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </Container>
     );
   }
