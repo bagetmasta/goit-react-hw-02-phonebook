@@ -8,6 +8,10 @@ export class ContactForm extends Component {
     number: '',
   };
 
+  static proptTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -52,7 +56,3 @@ export class ContactForm extends Component {
     );
   }
 }
-
-ContactForm.proptTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

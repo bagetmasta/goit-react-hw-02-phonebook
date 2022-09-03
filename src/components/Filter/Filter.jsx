@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Input } from '../Filter';
 
-export const Filter = ({ onChange }) => {
+export const Filter = ({ onChange, filter }) => {
   const handleChange = e => {
     onChange(e.currentTarget.value);
   };
@@ -9,7 +9,7 @@ export const Filter = ({ onChange }) => {
   return (
     <>
       <p>Find contacts by name</p>
-      <Input type="text" onChange={handleChange} />
+      <Input type="text" onChange={handleChange} value={filter} />
     </>
   );
 };
