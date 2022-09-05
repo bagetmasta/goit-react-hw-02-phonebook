@@ -8,7 +8,7 @@ export class ContactForm extends Component {
     number: '',
   };
 
-  static proptTypes = {
+  static propTypes = {
     onSubmit: PropTypes.func.isRequired,
   };
 
